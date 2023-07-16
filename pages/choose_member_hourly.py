@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit.runtime.scriptrunner import RerunData, RerunException
 from streamlit.source_util import get_pages
-# from utils import get_button_color_markdown_formatting
+
 from pathlib import Path
 from PIL import Image
 
@@ -48,8 +48,6 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-# m = get_button_color_markdown_formatting()
-
 
 # === LOAD ASSETS ===
 logo_image = Image.open(Path('resources/logo/ShopSpace-YellowLogo1200x320.png'))
@@ -60,21 +58,25 @@ logo_image = Image.open(Path('resources/logo/ShopSpace-YellowLogo1200x320.png'))
 # Image
 st.image(image=logo_image, use_column_width=True)
 
-# Blank Space
-st.text(" ")
-st.text(" ")
+# Text
+st.markdown('# Safety Acknowlegement') 
+
+st.text(' ')
+st.markdown("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+
 
 # Buttons
 col1, col2, col3, col4 = st.columns([1,1,1,1])
 
-sign_in_button = col2.button(label="Sign In", use_container_width=True)
+sign_in_member_button = col2.button(label="Member", use_container_width=True)
 
-sign_out_button = col3.button(label="Sign Out", use_container_width=True)
+sign_in_hourly_button = col3.button(label="Hourly", use_container_width=True)
 
-if sign_in_button:
-    switch_page("safety_splash")
+if sign_in_member_button:
+    switch_page("sign_in_member")
 
-if sign_out_button:
-    switch_page("sign_out")
+if sign_in_hourly_button:
+    switch_page("sign_in_hourly")
+
 
 

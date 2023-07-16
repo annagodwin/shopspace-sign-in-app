@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit.runtime.scriptrunner import RerunData, RerunException
 from streamlit.source_util import get_pages
-# from utils import get_button_color_markdown_formatting
+
 from pathlib import Path
 from PIL import Image
 
@@ -48,8 +48,6 @@ div.stButton > button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-# m = get_button_color_markdown_formatting()
-
 
 # === LOAD ASSETS ===
 logo_image = Image.open(Path('resources/logo/ShopSpace-YellowLogo1200x320.png'))
@@ -60,21 +58,18 @@ logo_image = Image.open(Path('resources/logo/ShopSpace-YellowLogo1200x320.png'))
 # Image
 st.image(image=logo_image, use_column_width=True)
 
-# Blank Space
-st.text(" ")
-st.text(" ")
+# Page
+st.markdown('## Please see a Staff Member')
 
-# Buttons
-col1, col2, col3, col4 = st.columns([1,1,1,1])
+st.text(' ')
+st.markdown('The following errors were encountered signing you in: ')
 
-sign_in_button = col2.button(label="Sign In", use_container_width=True)
+st.text(' ')
+st.markdown('- Your member dues for this month have not been paid.')
+st.markdown('- You have not completed the required safety class for Open Time.')
 
-sign_out_button = col3.button(label="Sign Out", use_container_width=True)
-
-if sign_in_button:
-    switch_page("safety_splash")
-
-if sign_out_button:
-    switch_page("sign_out")
+st.text(' ')
+st.markdown('Please see a staff member.')
 
 
+# TODO - add back to sign in page button

@@ -1,0 +1,13 @@
+Bookeo ID,First Name,Last Name,Sign In Time,Sign Out Time
+1234,Rod,Brind'Amour,11:53,
+1234,Rod,Brind'Amour,11:54,
+1234,Rod,Brind'Amour,11:57,
+1234,Rod,Brind'Amour,12:17,
+"   Bookeo ID
+3       5555",Rod,Brind'Amour,12:19,
+"3    5555
+Name: Bookeo ID, dtype: int64",Rod,Brind'Amour,12:19,
+5555,Rod,Brind'Amour,12:23,
+4444,Rod,Brind'Amour,12:23,
+4444,Rod,Brind'Amour,12:26,
+4444,Rod,Brind'Amour,12:29,

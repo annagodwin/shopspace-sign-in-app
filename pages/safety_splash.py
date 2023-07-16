@@ -1,11 +1,9 @@
 import streamlit as st
 from streamlit.runtime.scriptrunner import RerunData, RerunException
 from streamlit.source_util import get_pages
-import streamlit.components.v1 as components
 
 from pathlib import Path
 from PIL import Image
-import time
 
 # === PAGE SETTINGS === 
 # disable sidebar
@@ -19,7 +17,7 @@ def switch_page(page_name: str):
 
     page_name = standardize_name(page_name)
 
-    pages = get_pages("home.py")  # OR whatever your main page is called
+    pages = get_pages("src/sign_in_app/home.py")  # OR whatever your main page is called
 
     for page_hash, config in pages.items():
         if standardize_name(config["page_name"]) == page_name:
@@ -60,20 +58,18 @@ logo_image = Image.open(Path('resources/logo/ShopSpace-YellowLogo1200x320.png'))
 # Image
 st.image(image=logo_image, use_column_width=True)
 
-st.text(" ")
-# Embed Form
-components.iframe("https://docs.google.com/forms/d/e/1FAIpQLSdLXE7GoJYUKEjpuxHn_jhnJ62QJMTi-_4hvsspaKJiIZ7NWw/viewform?embedded=true",
-                  width=640, height=500, scrolling=True)
+# Text
+st.markdown('# Safety Acknowlegement') 
 
-st.text(" ")
+st.text(' ')
+st.markdown("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+
+
 # Buttons
 col1, col2, col3 = st.columns([1,1,1])
 
+acknowledge_safety = col2.button(label="I acknowledge the Safety Agreement", use_container_width=True)
 
-# time.sleep(10)
-complete_button = col2.button(label="I've completed the form and clicked the Submit button", use_container_width=True)
-
-if complete_button:
-    switch_page("thank_you")
-
+if acknowledge_safety:
+    switch_page("choose_member_hourly")
 
