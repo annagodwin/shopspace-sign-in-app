@@ -23,6 +23,7 @@ logo_image = get_shopspace_logo()
 # Initialize Session State
 for key in st.session_state.keys():
     del st.session_state[key]
+st.session_state.type = None
 
 # Logo / Title
 st.image(image=logo_image, use_column_width=True)
@@ -37,9 +38,9 @@ sign_in_button = col2.button(label="Sign In", use_container_width=True)
 sign_out_button = col3.button(label="Sign Out", use_container_width=True)
 
 if sign_in_button:
-    switch_page("safety_splash")
+    switch_page("sia_safety_splash")
 
 if sign_out_button:
-    switch_page("sign_out")
+    switch_page("sia_sign_out")
 
 

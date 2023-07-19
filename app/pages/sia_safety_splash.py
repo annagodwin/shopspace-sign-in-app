@@ -37,5 +37,5 @@ col1, col2, col3 = st.columns([1,1,1])
 acknowledge_safety_button = col2.button(label="I acknowledge the Safety Agreement", use_container_width=True)
 
 if acknowledge_safety_button:
-    switch_page("choose_member_hourly")
+    switch_page("sia_choose_type")
 

@@ -21,7 +21,7 @@ logo_image = get_shopspace_logo()
 
 if st.session_state.type == 'Member':
     data_fpath = Path('resources/sign_in_app/membership_list.csv')
-else: 
+else: #elif hourly then else fail
     data_fpath = Path('resources/sign_in_app/open_time_safety_class_list.csv')
 
 last_name_set = load_name_set(data_fpath, 'Last Name')
@@ -120,6 +120,10 @@ if selected_last_name:
             
             st.session_state.member_paid_status = get_user_paid_status(st.session_state.bookeo_id)
             st.session_state.safety_class_status = get_user_safety_status(st.session_state.bookeo_id)
+        
+        elif st.session_state.type == 'Hourly':
+            st.session_state.safety_class_status = get_user_safety_status(st.session_state.bookeo_id)
+            st.session_state.member_paid_status = 'N/A'
 
         sign_in_time = datetime.now().strftime('%H:%M')
         sign_in_user_df = pd.DataFrame([{'Bookeo ID': st.session_state.bookeo_id,
@@ -139,7 +143,7 @@ if selected_last_name:
             error_log_df = pd.concat([error_log_df, sign_in_user_df])
             error_log_df.to_csv(error_log_filepath, index=False)
             
-            switch_page("see_staff")
+            switch_page("sia_see_staff")
 
 
         sign_in_button = st.button(sign_in_button_text)
@@ -150,5 +154,5 @@ if selected_last_name:
             daily_log_df = pd.concat([daily_log_df, sign_in_user_df])
             daily_log_df.to_csv(daily_log_filepath, index=False)
 
-            switch_page("thank_you")
+            switch_page("sia_thank_you")
 

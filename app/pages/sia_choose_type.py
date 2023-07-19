@@ -40,11 +40,11 @@ sign_in_hourly_button = col3.button(label="Hourly", use_container_width=True)
 
 if sign_in_member_button:
     st.session_state.type = 'Member'
-    switch_page("sign_in")
+    switch_page("sia_sign_in_user")
 
 if sign_in_hourly_button:
     st.session_state.type = 'Hourly'
-    switch_page("sign_in")
+    switch_page("sia_sign_in_user")
 
 
 

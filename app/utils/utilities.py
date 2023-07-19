@@ -201,3 +201,44 @@ def initialize_error_log() -> Path:
         df.to_csv(log_filepath,index=False)
     
     return log_filepath
+
+def get_daily_log_df():
+    log_path = Path("/Users/akgodwin/Repos/Github_annagodwin/shopspace-sign-in-app/resources/sign_in_app/")
+    julian_date = datetime.now().strftime('%Y%m%d') 
+    log_filename = Path(f'{julian_date}_sign_in_log.csv')
+    log_filepath = log_path / log_filename
+    
+    df = pd.read_csv(log_filepath)
+    
+    return log_filepath, df
+
+def get_error_log_df():
+    log_path = Path("/Users/akgodwin/Repos/Github_annagodwin/shopspace-sign-in-app/resources/sign_in_app/")
+    julian_date = datetime.now().strftime('%Y%m%d') 
+    log_filename = Path(f'{julian_date}_sign_in_error_log.csv')
+    log_filepath = log_path / log_filename
+    
+    df = pd.read_csv(log_filepath)
+    
+    return log_filepath, df
+
+
+def get_tool_training_df(b_id):
+    log_path = Path("resources/sign_in_app/tool_training_list.csv")
+    
+    df = pd.read_csv(log_path)
+    
+    output_df = df[df['Bookeo ID'] == b_id]
+    
+    return output_df
+
+
+
+def get_notes_df(b_id):
+    log_path = Path("resources/sign_in_app/user_notes_list.csv")
+    
+    df = pd.read_csv(log_path)
+    
+    output_df = df[df['Bookeo ID'] == b_id]
+    
+    return output_df
