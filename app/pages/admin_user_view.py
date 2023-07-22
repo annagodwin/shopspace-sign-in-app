@@ -28,6 +28,12 @@ user_notes_df = get_notes_df(st.session_state.admin_bookeo_id)
 # ===========
 #     APP 
 # ===========
+# Home button
+col_a, col_b, col_c, col_d, col_e, col_f, col_g = st.columns([1,1,1,1,1,1,1])
+home_button = col_a.button(label="Admin Home", use_container_width=True)
+if home_button:
+    switch_page("admin_home")  
+
 # Logo / Title
 st.image(image=logo_image, use_column_width=True)
 st.text(' ')
@@ -60,7 +66,4 @@ if len(user_notes_df) == 0:
 else:
     for note in list(user_notes_df['Note']):
         st.markdown(f'- {note}')
-    # st.dataframe(user_notes_df, hide_index=True)
-
-
 

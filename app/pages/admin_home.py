@@ -51,7 +51,7 @@ st.text(' ')
 # # Signed In
 st.markdown("### Signed In")
 if len(daily_log_signed_in_df) == 0:
-     st.markdown("No sign-in's yet today.")
+     st.markdown("No Sign-ins yet today.")
 else: 
     # temp table during dev
     # st.dataframe(daily_log_signed_in_df, hide_index=True)
@@ -84,20 +84,31 @@ else:
 # # Signed Out
 st.markdown("### Signed Out")
 if len(daily_log_signed_out_df) == 0:
-     st.markdown("No sign-outs yet today.")
+     st.markdown("No Sign-outs yet today.")
 else: 
-    sign_out_cols = ['Bookeo ID', 'First Name', 'Last Name', 'Phone Number', 'Type', 'Sign In Time', 'Sign Out Time']
+    sign_out_cols = ['First Name', 'Last Name', 'Phone Number', 'Type', 'Sign In Time', 'Sign Out Time']
     st.dataframe(daily_log_signed_out_df[sign_out_cols], hide_index=True)
+
+# sign out all button
+col6, col7, col8 = st.columns((1, 1, 1))
+sign_out_all_button = col7.button('Sign Out Everyone')
+if sign_out_all_button:
+        switch_page("admin_sign_out_all")
+
 # # TODO sign everyone out button --> go to page to confirm
 
 # Error Signing In
 
 st.markdown("### Error Log")
 if len(error_log_df) == 0:
-     st.markdown("No sign-outs yet today.")
+    st.markdown("No Errors yet today.")
 else: 
-    st.dataframe(error_log_df, hide_index=True)
-
+    error_log_cols = ['Bookeo ID', 'First Name', 'Last Name', 'Phone Number', 'Type', 'Member Paid Status','Safety Class Status']
+    st.dataframe(error_log_df[error_log_cols], hide_index=True)
+    col9, col10, col11 = st.columns((1, 1, 1))
+    sign_out_all_button = col10.button('Clear Error Log')
+    if sign_out_all_button:
+         switch_page("admin_clear_error_log")
 
 
 

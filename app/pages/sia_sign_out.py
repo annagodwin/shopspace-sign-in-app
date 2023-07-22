@@ -116,7 +116,11 @@ if selected_last_name:
 
             # everything but the user record
             updated_daily_log_df = daily_log_df[~(daily_log_df['Bookeo ID'] == bookeo_id)]
+            
+            # updated daily log
             updated_daily_log_df = pd.concat([updated_daily_log_df, user_row_df])
+            
+            # write results
             updated_daily_log_df.to_csv(daily_log_filepath, index=False)
 
             switch_page("sia_thank_you")

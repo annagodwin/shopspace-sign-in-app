@@ -190,13 +190,17 @@ def initialize_daily_log() -> Path:
     
     return log_filepath
 
-def initialize_error_log() -> Path:
+def initialize_error_log(clear_log=False) -> Path:
     log_path = Path("/Users/akgodwin/Repos/Github_annagodwin/shopspace-sign-in-app/resources/sign_in_app/")
     julian_date = datetime.now().strftime('%Y%m%d') 
     log_filename = Path(f'{julian_date}_sign_in_error_log.csv')
     log_filepath = log_path / log_filename
     
     if not os.path.exists(log_filepath):
+        df=pd.DataFrame(columns=['Bookeo ID','First Name','Last Name','Phone Number','Type','Member Paid Status','Safety Class Status','Sign In Time','Sign Out Time'])
+        df.to_csv(log_filepath,index=False)
+    
+    if clear_log is True:
         df=pd.DataFrame(columns=['Bookeo ID','First Name','Last Name','Phone Number','Type','Member Paid Status','Safety Class Status','Sign In Time','Sign Out Time'])
         df.to_csv(log_filepath,index=False)
     
